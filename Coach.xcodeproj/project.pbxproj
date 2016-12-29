@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095884821E15474F007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
+		095884831E15474F007FBFFF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884811E15474F007FBFFF /* RealmSwift.framework */; };
+		095884841E15478B007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
+		095884851E15478B007FBFFF /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		095884861E15478B007FBFFF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884811E15474F007FBFFF /* RealmSwift.framework */; };
+		095884871E15478B007FBFFF /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 095884811E15474F007FBFFF /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09A8809C1E151873000F2B30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8809B1E151873000F2B30 /* AppDelegate.swift */; };
 		09A8809E1E151873000F2B30 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8809D1E151873000F2B30 /* FirstViewController.swift */; };
 		09A880A01E151873000F2B30 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8809F1E151873000F2B30 /* SecondViewController.swift */; };
@@ -34,7 +40,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		095884881E15478B007FBFFF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				095884871E15478B007FBFFF /* RealmSwift.framework in Embed Frameworks */,
+				095884851E15478B007FBFFF /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		095884801E15474F007FBFFF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		095884811E15474F007FBFFF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		09A880981E151873000F2B30 /* Coach.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coach.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A8809B1E151873000F2B30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A8809D1E151873000F2B30 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +79,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				095884841E15478B007FBFFF /* Realm.framework in Frameworks */,
+				095884831E15474F007FBFFF /* RealmSwift.framework in Frameworks */,
+				095884861E15478B007FBFFF /* RealmSwift.framework in Frameworks */,
+				095884821E15474F007FBFFF /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +133,8 @@
 				09A880A41E151874000F2B30 /* Assets.xcassets */,
 				09A880A61E151874000F2B30 /* LaunchScreen.storyboard */,
 				09A880A91E151874000F2B30 /* Info.plist */,
+				095884801E15474F007FBFFF /* Realm.framework */,
+				095884811E15474F007FBFFF /* RealmSwift.framework */,
 			);
 			path = Coach;
 			sourceTree = "<group>";
@@ -138,6 +167,8 @@
 				09A880941E151873000F2B30 /* Sources */,
 				09A880951E151873000F2B30 /* Frameworks */,
 				09A880961E151873000F2B30 /* Resources */,
+				095884881E15478B007FBFFF /* Embed Frameworks */,
+				095884891E154797007FBFFF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -256,6 +287,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		095884891E154797007FBFFF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09A880941E151873000F2B30 /* Sources */ = {
@@ -414,6 +461,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Coach",
+				);
 				INFOPLIST_FILE = Coach/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.grinchyourself.com.Coach;
@@ -426,6 +477,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Coach",
+				);
 				INFOPLIST_FILE = Coach/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.grinchyourself.com.Coach;
@@ -507,6 +562,7 @@
 				09A880C41E151874000F2B30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09A880C51E151874000F2B30 /* Build configuration list for PBXNativeTarget "CoachTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +571,7 @@
 				09A880C71E151874000F2B30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		09A880C81E151874000F2B30 /* Build configuration list for PBXNativeTarget "CoachUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +580,7 @@
 				09A880CA1E151874000F2B30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

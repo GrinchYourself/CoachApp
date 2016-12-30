@@ -13,14 +13,7 @@ class PlayersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // Instantiate the separate storyboard for Players section and load it
-        let storyboard = UIStoryboard(name: "Players", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()! as UIViewController
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMove(toParentViewController: self)
-        
+        print("Players")
     }
 
     override func didReceiveMemoryWarning() {

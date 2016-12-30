@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		093287511E16F3B000AED8D7 /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093287501E16F3B000AED8D7 /* Players.storyboard */; };
-		093287531E16F7B100AED8D7 /* Matchs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 093287521E16F7B100AED8D7 /* Matchs.storyboard */; };
+		091418791E170864009A049C /* Matchs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091418781E170864009A049C /* Matchs.storyboard */; };
+		0914187C1E17087E009A049C /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914187A1E17087E009A049C /* Players.storyboard */; };
 		095884821E15474F007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
 		095884831E15474F007FBFFF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884811E15474F007FBFFF /* RealmSwift.framework */; };
 		095884841E15478B007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
@@ -60,8 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		093287501E16F3B000AED8D7 /* Players.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Players.storyboard; sourceTree = "<group>"; };
-		093287521E16F7B100AED8D7 /* Matchs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Matchs.storyboard; sourceTree = "<group>"; };
+		091418781E170864009A049C /* Matchs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Matchs.storyboard; sourceTree = "<group>"; };
+		0914187B1E17087E009A049C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Players.storyboard; sourceTree = "<group>"; };
 		095884801E15474F007FBFFF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		095884811E15474F007FBFFF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		0958848A1E1548F9007FBFFF /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 				095884901E155E24007FBFFF /* ViewController */,
 				09A8809B1E151873000F2B30 /* AppDelegate.swift */,
 				09A880A11E151874000F2B30 /* Main.storyboard */,
-				093287521E16F7B100AED8D7 /* Matchs.storyboard */,
-				093287501E16F3B000AED8D7 /* Players.storyboard */,
+				0914187A1E17087E009A049C /* Players.storyboard */,
+				091418781E170864009A049C /* Matchs.storyboard */,
 				09A880A41E151874000F2B30 /* Assets.xcassets */,
 				09A880A61E151874000F2B30 /* LaunchScreen.storyboard */,
 				09A880A91E151874000F2B30 /* Info.plist */,
@@ -302,11 +302,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0914187C1E17087E009A049C /* Players.storyboard in Resources */,
+				091418791E170864009A049C /* Matchs.storyboard in Resources */,
 				09A880A81E151874000F2B30 /* LaunchScreen.storyboard in Resources */,
-				093287511E16F3B000AED8D7 /* Players.storyboard in Resources */,
 				09A880A51E151874000F2B30 /* Assets.xcassets in Resources */,
 				09A880A31E151874000F2B30 /* Main.storyboard in Resources */,
-				093287531E16F7B100AED8D7 /* Matchs.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +387,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0914187A1E17087E009A049C /* Players.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0914187B1E17087E009A049C /* Base */,
+			);
+			name = Players.storyboard;
+			sourceTree = "<group>";
+		};
 		09A880A11E151874000F2B30 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

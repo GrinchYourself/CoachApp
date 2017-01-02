@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		091418791E170864009A049C /* Matchs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091418781E170864009A049C /* Matchs.storyboard */; };
 		0914187C1E17087E009A049C /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914187A1E17087E009A049C /* Players.storyboard */; };
+		093F71FE1E1B06DB0080C78E /* PlayerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */; };
 		095884821E15474F007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
 		095884831E15474F007FBFFF /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884811E15474F007FBFFF /* RealmSwift.framework */; };
 		095884841E15478B007FBFFF /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 095884801E15474F007FBFFF /* Realm.framework */; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		091418781E170864009A049C /* Matchs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Matchs.storyboard; sourceTree = "<group>"; };
 		0914187B1E17087E009A049C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Players.storyboard; sourceTree = "<group>"; };
+		093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEditionViewController.swift; sourceTree = "<group>"; };
 		095884801E15474F007FBFFF /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		095884811E15474F007FBFFF /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		0958848A1E1548F9007FBFFF /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -111,6 +113,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		093F71FC1E1B05280080C78E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				09A880A11E151874000F2B30 /* Main.storyboard */,
+				0914187A1E17087E009A049C /* Players.storyboard */,
+				091418781E170864009A049C /* Matchs.storyboard */,
+				09A880A61E151874000F2B30 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
 		0958848E1E155DF1007FBFFF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +145,7 @@
 		095884901E155E24007FBFFF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */,
 				09A8809D1E151873000F2B30 /* MatchsViewController.swift */,
 				09A8809F1E151873000F2B30 /* PlayersViewController.swift */,
 			);
@@ -164,11 +178,8 @@
 				0958848E1E155DF1007FBFFF /* Model */,
 				095884901E155E24007FBFFF /* ViewController */,
 				09A8809B1E151873000F2B30 /* AppDelegate.swift */,
-				09A880A11E151874000F2B30 /* Main.storyboard */,
-				0914187A1E17087E009A049C /* Players.storyboard */,
-				091418781E170864009A049C /* Matchs.storyboard */,
+				093F71FC1E1B05280080C78E /* Storyboards */,
 				09A880A41E151874000F2B30 /* Assets.xcassets */,
-				09A880A61E151874000F2B30 /* LaunchScreen.storyboard */,
 				09A880A91E151874000F2B30 /* Info.plist */,
 				0958848F1E155DFC007FBFFF /* RealmFramework */,
 			);
@@ -351,6 +362,7 @@
 				0958848B1E1548F9007FBFFF /* Player.swift in Sources */,
 				09A8809C1E151873000F2B30 /* AppDelegate.swift in Sources */,
 				0958848D1E155022007FBFFF /* Match.swift in Sources */,
+				093F71FE1E1B06DB0080C78E /* PlayerEditionViewController.swift in Sources */,
 				09A8809E1E151873000F2B30 /* MatchsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

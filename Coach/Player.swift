@@ -12,4 +12,8 @@ import RealmSwift
 class Player: Object {
     dynamic var name = ""
     dynamic var phoneNumber = ""
+    
+    override static func primaryKey() -> String? {
+        return "name"
+    }
 }

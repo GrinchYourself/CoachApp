@@ -13,7 +13,7 @@
         <!--Players-->
         <scene sceneID="AAd-ps-1BM">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NSf-Zs-UKM" sceneMemberID="viewController">
+                <navigationController title="Players" automaticallyAdjustsScrollViewInsets="NO" id="NSf-Zs-UKM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Players" image="PlayersTabBarIcon" id="nCs-XD-f42"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="953" y="117"/>
         </scene>
-        <!--View Controller-->
+        <!--Player Edition View Controller-->
         <scene sceneID="7i7-lx-r9Y">
             <objects>
-                <viewController id="Yi9-4f-qfm" sceneMemberID="viewController">
+                <viewController id="Yi9-4f-qfm" customClass="PlayerEditionViewController" customModule="Coach" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mdn-Zj-GYY"/>
                         <viewControllerLayoutGuide type="bottom" id="zKe-Kb-EAG"/>
@@ -77,13 +77,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ose-Wd-9yO">
-                                <rect key="frame" x="164" y="629" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-pa-Z4n">
                                 <rect key="frame" x="24" y="72" width="327" height="30"/>
                                 <nil key="textColor"/>
@@ -94,12 +87,23 @@
                                 <rect key="frame" x="24" y="110" width="327" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ose-Wd-9yO">
+                                <rect key="frame" x="165" y="617" width="45" height="30"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deletePlayer" destination="Yi9-4f-qfm" eventType="touchUpInside" id="ujr-K0-3kU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bsK-pa-Z4n" firstAttribute="top" secondItem="Mdn-Zj-GYY" secondAttribute="bottom" constant="8" id="7hR-nP-nnh"/>
+                            <constraint firstItem="Ose-Wd-9yO" firstAttribute="centerX" secondItem="bKh-ME-DsJ" secondAttribute="centerX" id="FD0-re-0qw"/>
+                            <constraint firstItem="zKe-Kb-EAG" firstAttribute="top" secondItem="Ose-Wd-9yO" secondAttribute="bottom" constant="20" id="Q0a-l0-NNX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bsK-pa-Z4n" secondAttribute="trailing" constant="8" id="VsG-1E-Try"/>
                             <constraint firstItem="sIu-82-WAP" firstAttribute="top" secondItem="bsK-pa-Z4n" secondAttribute="bottom" constant="8" id="Y7Y-zd-qNA"/>
                             <constraint firstItem="bsK-pa-Z4n" firstAttribute="leading" secondItem="bKh-ME-DsJ" secondAttribute="leadingMargin" constant="8" id="fkf-nD-Y8V"/>
@@ -108,13 +112,26 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1E1-k6-Ivg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pdu-Cy-R7M"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="v8K-pG-gfH"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Pdu-Cy-R7M">
+                            <connections>
+                                <action selector="cancelEditionPlayer:" destination="Yi9-4f-qfm" id="DAr-Lx-2HS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="v8K-pG-gfH">
+                            <connections>
+                                <action selector="saveEditionPlayer:" destination="Yi9-4f-qfm" id="gCQ-Lv-up4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ui_doneEditionPlayerButton" destination="v8K-pG-gfH" id="JmC-yF-LSa"/>
+                        <outlet property="ui_namePlayer" destination="bsK-pa-Z4n" id="MaW-DS-fyl"/>
+                        <outlet property="ui_phoneNumberPlayer" destination="sIu-82-WAP" id="aJf-Yr-8QR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9a-WH-Rvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2382" y="116"/>
+            <point key="canvasLocation" x="2420" y="116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C4k-H7-gbH">
@@ -132,7 +149,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yzZ-sq-Du8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="116"/>
+            <point key="canvasLocation" x="1681" y="116"/>
         </scene>
     </scenes>
     <resources>

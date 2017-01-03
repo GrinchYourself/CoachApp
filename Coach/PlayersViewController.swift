@@ -71,15 +71,15 @@ class PlayersViewController: UITableViewController {
                 playerVC.player = player
                 
             }
-//        } else if segue.identifier! == "NewPlayer" {
-//            if let destVC = segue.destination as? UINavigationController {
-//                let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
-//                // Informs PlayerEditionViewController that we create a new Player
-//                playerEditionVC.editNotNew = false
-//                playerEditionVC.delegate = self
-//                player = nil
-//            }
-//            
+        } else if segue.identifier! == "NewPlayer" {
+            if let destVC = segue.destination as? UINavigationController {
+                let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
+                // Informs PlayerEditionViewController that we create a new Player
+                playerEditionVC.editNotNew = false
+                //playerEditionVC.delegate = self
+                playerEditionVC.player = nil
+            }
+            
 //        } else if segue.identifier! == "ShowNewPlayer" {
 //            if let playerVC = segue.destination as? PlayerViewController {
 //                

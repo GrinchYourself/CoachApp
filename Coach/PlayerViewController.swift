@@ -30,14 +30,23 @@ class PlayerViewController: UIViewController {
         ui_playerPhoneNumber.text = player.phoneNumber
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier! == "EditPlayer" {
+            
+            if let destVC = segue.destination as? UINavigationController {
+                let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
+                // Pass the variable
+                playerEditionVC.player = player
+                playerEditionVC.editNotNew = true
+            }
+        }
     }
-    */
+
 
 }

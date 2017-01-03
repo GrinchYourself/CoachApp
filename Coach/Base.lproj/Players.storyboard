@@ -121,7 +121,7 @@
                     <navigationItem key="navigationItem" id="UKc-gl-mty">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Via-c4-sWT">
                             <connections>
-                                <segue destination="XEh-ag-yKM" kind="presentation" id="44J-5l-K52"/>
+                                <segue destination="XEh-ag-yKM" kind="presentation" identifier="EditPlayer" id="44J-5l-K52"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -147,13 +147,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-pa-Z4n">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bsK-pa-Z4n">
                                 <rect key="frame" x="24" y="72" width="327" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sIu-82-WAP">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="sIu-82-WAP">
                                 <rect key="frame" x="24" y="110" width="327" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -226,6 +226,6 @@
         <image name="PlayersTabBarIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="44J-5l-K52"/>
+        <segue reference="HiM-bp-xiL"/>
     </inferredMetricsTieBreakers>
 </document>

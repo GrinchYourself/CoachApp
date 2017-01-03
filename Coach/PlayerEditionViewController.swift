@@ -19,6 +19,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     //MARK: - VC's Variables
     let realm = try! Realm()
     var player : Player?
+    var editNotNew: Bool? //Variable to be defined in the "prepare" function called with the segue
     
     //MARK: - UI Methods
     @IBAction func cancelEditionPlayer(_ sender: UIBarButtonItem) {
@@ -32,7 +33,6 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     @IBAction func saveEditionPlayer(_ sender: UIBarButtonItem) {
         print("Save Player's edition")
         // This function is available only if the player's name is filled in
-        //let player = Player()
         player!.name = ui_namePlayer.text!.trimmingCharacters(in: .whitespaces)
         player!.phoneNumber = ui_phoneNumberPlayer.text!
         try! realm.write {
@@ -50,13 +50,13 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         super.viewDidLoad()
         
         //VC's title
-        if player == nil {
-            title = "New Player"
-            player = Player()
-        } else {
+        if editNotNew! {
             title = player!.name
             ui_namePlayer.text = player!.name
             ui_phoneNumberPlayer.text = player!.phoneNumber
+        } else {
+            title = "New Player"
+            player = Player()
         }
         //Done button
         ui_doneEditionPlayerButton.isEnabled = false
@@ -72,9 +72,12 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         slideDownGesture.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(slideDownGesture)
         
+        //Activate nameTextField
+        ui_namePlayer.becomeFirstResponder()
+        
         //Print realm datafile
         print("Realm File: \(Realm.Configuration.defaultConfiguration.fileURL!)")
-        
+
     }
     
     // MARK: - UITextField Methods

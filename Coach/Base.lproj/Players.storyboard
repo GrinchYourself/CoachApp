@@ -79,6 +79,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="DoQ-qf-bN8" kind="show" identifier="ShowNewPlayer" animates="NO" id="OuK-0c-D8O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPF-k3-2ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -226,6 +229,7 @@
         <image name="PlayersTabBarIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="OuK-0c-D8O"/>
         <segue reference="HiM-bp-xiL"/>
     </inferredMetricsTieBreakers>
 </document>

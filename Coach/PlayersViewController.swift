@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class PlayersViewController: UITableViewController {
+class PlayersViewController: UITableViewController, EditionDelegate {
     
     //MARK: - VC's Variables
     let realm = try! Realm()
@@ -19,6 +19,7 @@ class PlayersViewController: UITableViewController {
             return realm.objects(Player.self).sorted(byProperty: "name")
         }
     }
+    var player:Player = Player()
 
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -63,7 +64,7 @@ class PlayersViewController: UITableViewController {
             
             if let playerVC = segue.destination as? PlayerViewController {
                 
-                // Create Fetch Request
+                // Get selected player
                 let indexPath = tableView.indexPathForSelectedRow!
                 let player = players[indexPath.row]
                 
@@ -76,21 +77,24 @@ class PlayersViewController: UITableViewController {
                 let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
                 // Informs PlayerEditionViewController that we create a new Player
                 playerEditionVC.editNotNew = false
-                //playerEditionVC.delegate = self
+                playerEditionVC.delegate = self
                 playerEditionVC.player = nil
             }
             
-//        } else if segue.identifier! == "ShowNewPlayer" {
-//            if let playerVC = segue.destination as? PlayerViewController {
-//                
-//                // Pass the variable
-//                playerVC.player = player
-//                
-//            }
-//            
-//        }
+        } else if segue.identifier! == "ShowNewPlayer" {
+            if let playerVC = segue.destination as? PlayerViewController {
+                // Pass the variable
+                playerVC.player = player
+            }
+            
         }
     }
 
+    func dismissEditionViewController(controller: UIViewController, player: Player) {
+        //This function allows to pass player variable and launch PlayerViewController before dismissing EditionViewController
+        self.player = player
+        self.performSegue(withIdentifier: "ShowNewPlayer", sender: nil)
+        controller.dismiss(animated: true, completion: nil)
+    }
 }
 

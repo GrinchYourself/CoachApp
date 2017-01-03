@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: UIViewController, EditionDelegate {
 
     // MARK: - UI's variables
     @IBOutlet weak var ui_playerName: UILabel!
@@ -44,9 +45,15 @@ class PlayerViewController: UIViewController {
                 // Pass the variable
                 playerEditionVC.player = player
                 playerEditionVC.editNotNew = true
+                playerEditionVC.delegate = self
             }
         }
     }
 
-
+    func dismissEditionViewController(controller: UIViewController, player: Player) {
+        //This function allows to refresh Player View before dismissing EditionViewController
+        self.player = player
+        updateUI()
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

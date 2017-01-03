@@ -9,6 +9,10 @@
 import UIKit
 import RealmSwift
 
+protocol EditionDelegate {
+    func dismissEditionViewController(controller: UIViewController, player: Player)
+}
+
 class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     //MARK: - UI's Variables
@@ -17,6 +21,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     @IBOutlet weak var ui_doneEditionPlayerButton: UIBarButtonItem!
     
     //MARK: - VC's Variables
+    var delegate : EditionDelegate!
     let realm = try! Realm()
     var player : Player?
     var editNotNew: Bool? //Variable to be defined in the "prepare" function called with the segue
@@ -33,13 +38,15 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     @IBAction func saveEditionPlayer(_ sender: UIBarButtonItem) {
         print("Save Player's edition")
         // This function is available only if the player's name is filled in
-        player!.name = ui_namePlayer.text!.trimmingCharacters(in: .whitespaces)
-        player!.phoneNumber = ui_phoneNumberPlayer.text!
+        let pl = Player()
+        pl.name = ui_namePlayer.text!.trimmingCharacters(in: .whitespaces)
+        pl.phoneNumber = ui_phoneNumberPlayer.text!
         try! realm.write {
-            realm.add(player!, update:true)
+            realm.add(pl, update:true)
         }
         
-        self.dismiss(animated: true, completion: nil)
+        //Use of delegate to dismiss
+        self.delegate!.dismissEditionViewController(controller: self, player: pl)
     }
     @IBAction func deletePlayer() {
         print("Delete Player")
@@ -49,7 +56,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //VC's title
+        //VC's title and player init
         if editNotNew! {
             title = player!.name
             ui_namePlayer.text = player!.name
@@ -72,9 +79,12 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         slideDownGesture.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(slideDownGesture)
         
-        //Activate nameTextField
-        ui_namePlayer.becomeFirstResponder()
-        
+        //Activate or disable nameTextField
+        if editNotNew! {
+            ui_namePlayer.isEnabled = false
+        } else {
+            ui_namePlayer.becomeFirstResponder()
+        }
         //Print realm datafile
         print("Realm File: \(Realm.Configuration.defaultConfiguration.fileURL!)")
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0907E76C1E1BF43600C04809 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0907E76B1E1BF43600C04809 /* PlayerViewController.swift */; };
 		091418791E170864009A049C /* Matchs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 091418781E170864009A049C /* Matchs.storyboard */; };
 		0914187C1E17087E009A049C /* Players.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0914187A1E17087E009A049C /* Players.storyboard */; };
 		093F71FE1E1B06DB0080C78E /* PlayerEditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0907E76B1E1BF43600C04809 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		091418781E170864009A049C /* Matchs.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Matchs.storyboard; sourceTree = "<group>"; };
 		0914187B1E17087E009A049C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Players.storyboard; sourceTree = "<group>"; };
 		093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerEditionViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 		095884901E155E24007FBFFF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0907E76B1E1BF43600C04809 /* PlayerViewController.swift */,
 				093F71FD1E1B06DB0080C78E /* PlayerEditionViewController.swift */,
 				09A8809D1E151873000F2B30 /* MatchsViewController.swift */,
 				09A8809F1E151873000F2B30 /* PlayersViewController.swift */,
@@ -361,6 +364,7 @@
 				09A880A01E151873000F2B30 /* PlayersViewController.swift in Sources */,
 				0958848B1E1548F9007FBFFF /* Player.swift in Sources */,
 				09A8809C1E151873000F2B30 /* AppDelegate.swift in Sources */,
+				0907E76C1E1BF43600C04809 /* PlayerViewController.swift in Sources */,
 				0958848D1E155022007FBFFF /* Match.swift in Sources */,
 				093F71FE1E1B06DB0080C78E /* PlayerEditionViewController.swift in Sources */,
 				09A8809E1E151873000F2B30 /* MatchsViewController.swift in Sources */,

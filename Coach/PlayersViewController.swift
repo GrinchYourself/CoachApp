@@ -52,5 +52,45 @@ class PlayersViewController: UITableViewController {
         return cell
         
     }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier! == "Player" {
+            
+            if let playerVC = segue.destination as? PlayerViewController {
+                
+                // Create Fetch Request
+                let indexPath = tableView.indexPathForSelectedRow!
+                let player = players[indexPath.row]
+                
+                // Pass the variable
+                playerVC.player = player
+                
+            }
+//        } else if segue.identifier! == "NewPlayer" {
+//            if let destVC = segue.destination as? UINavigationController {
+//                let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
+//                // Informs PlayerEditionViewController that we create a new Player
+//                playerEditionVC.editNotNew = false
+//                playerEditionVC.delegate = self
+//                player = nil
+//            }
+//            
+//        } else if segue.identifier! == "ShowNewPlayer" {
+//            if let playerVC = segue.destination as? PlayerViewController {
+//                
+//                // Pass the variable
+//                playerVC.player = player
+//                
+//            }
+//            
+//        }
+        }
+    }
+
 }
 

@@ -62,6 +62,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="DoQ-qf-bN8" kind="show" identifier="Player" id="TEV-Wo-eBU"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -80,6 +83,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPF-k3-2ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="953" y="117"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="g17-MM-1ny">
+            <objects>
+                <viewController id="DoQ-qf-bN8" customClass="PlayerViewController" customModule="Coach" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fxU-Hz-KDk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ygP-qH-1j8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Dl-RR-cqr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiE-oY-7qq">
+                                <rect key="frame" x="166" y="72" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7OO-yl-hdW">
+                                <rect key="frame" x="166" y="101" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qiE-oY-7qq" firstAttribute="centerX" secondItem="5Dl-RR-cqr" secondAttribute="centerX" id="7iH-2W-opR"/>
+                            <constraint firstItem="7OO-yl-hdW" firstAttribute="centerX" secondItem="5Dl-RR-cqr" secondAttribute="centerX" id="8LN-0f-6hD"/>
+                            <constraint firstItem="qiE-oY-7qq" firstAttribute="top" secondItem="fxU-Hz-KDk" secondAttribute="bottom" constant="8" id="mxO-ab-2xj"/>
+                            <constraint firstItem="7OO-yl-hdW" firstAttribute="top" secondItem="qiE-oY-7qq" secondAttribute="bottom" constant="8" id="uFW-a1-Wr4"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="UKc-gl-mty">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="Via-c4-sWT">
+                            <connections>
+                                <segue destination="XEh-ag-yKM" kind="presentation" id="44J-5l-K52"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ui_playerName" destination="qiE-oY-7qq" id="2Yb-u9-lf4"/>
+                        <outlet property="ui_playerPhoneNumber" destination="7OO-yl-hdW" id="IKb-Od-yUm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dmI-wh-K41" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1758" y="439"/>
         </scene>
         <!--Player Edition View Controller-->
         <scene sceneID="7i7-lx-r9Y">
@@ -147,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9a-WH-Rvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2420" y="116"/>
+            <point key="canvasLocation" x="3234" y="-42"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C4k-H7-gbH">
@@ -165,10 +219,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yzZ-sq-Du8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681" y="116"/>
+            <point key="canvasLocation" x="2530" y="-42"/>
         </scene>
     </scenes>
     <resources>
         <image name="PlayersTabBarIcon" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="44J-5l-K52"/>
+    </inferredMetricsTieBreakers>
 </document>

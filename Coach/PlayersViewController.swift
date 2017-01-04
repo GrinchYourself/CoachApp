@@ -29,8 +29,25 @@ class PlayersViewController: UITableViewController, EditionDelegate {
         title = "Players"
         
         token = players.addNotificationBlock { (changes:RealmCollectionChange) in
-            self.tableView.reloadData()
+            switch changes {
+            case .initial:
+                self.tableView.reloadData()
+                break
+            case .update(_, let deletions, let insertions, let modifications):
+                // Query results have changed, so apply them to the TableView
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+                self.tableView.endUpdates()
+                break
+            case .error(let err):
+                // An error occurred while opening the Realm file on the background worker thread
+                fatalError("\(err)")
+                break
+            }
         }
+        
     }
     
     //MARK: - TableView Methods
@@ -52,6 +69,19 @@ class PlayersViewController: UITableViewController, EditionDelegate {
         cell.detailTextLabel?.text = players[indexPath.row].phoneNumber
         return cell
         
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let pl = players[indexPath.row]
+            try! self.realm.write {
+                self.realm.delete(pl)
+            }
+        }
     }
     
     //MARK: - Navigation

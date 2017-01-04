@@ -90,10 +90,12 @@ class PlayersViewController: UITableViewController, EditionDelegate {
         }
     }
 
-    func dismissEditionViewController(controller: UIViewController, player: Player) {
+    func dismissEditionViewController(controller: UIViewController, player: Player?) {
         //This function allows to pass player variable and launch PlayerViewController before dismissing EditionViewController
-        self.player = player
-        self.performSegue(withIdentifier: "ShowNewPlayer", sender: nil)
+        if player != nil{
+            self.player = player!
+            self.performSegue(withIdentifier: "ShowNewPlayer", sender: nil)
+        }
         controller.dismiss(animated: true, completion: nil)
     }
 }

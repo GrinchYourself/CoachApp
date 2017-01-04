@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 protocol EditionDelegate {
-    func dismissEditionViewController(controller: UIViewController, player: Player)
+    func dismissEditionViewController(controller: UIViewController, player: Player?)
 }
 
 class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
@@ -19,6 +19,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     @IBOutlet weak var ui_namePlayer: UITextField!
     @IBOutlet weak var ui_phoneNumberPlayer: UITextField!
     @IBOutlet weak var ui_doneEditionPlayerButton: UIBarButtonItem!
+    @IBOutlet weak var ui_deletePlayerButton: UIButton!
     
     //MARK: - VC's Variables
     var delegate : EditionDelegate!
@@ -44,12 +45,30 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         try! realm.write {
             realm.add(pl, update:true)
         }
-        
         //Use of delegate to dismiss
         self.delegate!.dismissEditionViewController(controller: self, player: pl)
     }
     @IBAction func deletePlayer() {
         print("Delete Player")
+        // Create and initialize a UIAlertController instance.
+        let alertController = UIAlertController(title: nil, message: "Do you really want to delete \(player!.name)?", preferredStyle: .actionSheet)
+        // Initialize the actions to show along with the alert.
+        let deleteAction = UIAlertAction(title:"Delete", style: .destructive) { (action) -> Void in
+            print("You selected the delete action")
+            try! self.realm.write {
+                self.realm.delete(self.player!)
+            }
+            //Use of delegate to dismiss
+            self.delegate!.dismissEditionViewController(controller: self, player: nil)
+        }
+        let cancelAction = UIAlertAction(title:"Cancel", style: .cancel) { (action) -> Void in
+            print("You selected the Cancel action")
+        }
+        // Tell the alertController about the actions we want it to present.
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        // Present the alert controller and associated actions.
+        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - viewDidLoad
@@ -79,11 +98,13 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         slideDownGesture.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(slideDownGesture)
         
-        //Activate or disable nameTextField
+        //Activate or disable nameTextField & delete button
         if editNotNew! {
             ui_namePlayer.isEnabled = false
+            ui_deletePlayerButton.isHidden = false
         } else {
             ui_namePlayer.becomeFirstResponder()
+            ui_deletePlayerButton.isHidden = true
         }
         //Print realm datafile
         print("Realm File: \(Realm.Configuration.defaultConfiguration.fileURL!)")

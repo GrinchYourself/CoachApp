@@ -50,10 +50,14 @@ class PlayerViewController: UIViewController, EditionDelegate {
         }
     }
 
-    func dismissEditionViewController(controller: UIViewController, player: Player) {
+    func dismissEditionViewController(controller: UIViewController, player: Player?) {
         //This function allows to refresh Player View before dismissing EditionViewController
-        self.player = player
-        updateUI()
+        if player != nil {
+            self.player = player!
+            updateUI()
+        }
+        self.navigationController!.popViewController(animated: false)
         controller.dismiss(animated: true, completion: nil)
+        
     }
 }

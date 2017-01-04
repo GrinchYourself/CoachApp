@@ -197,6 +197,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ui_deletePlayerButton" destination="Ose-Wd-9yO" id="si3-tl-utH"/>
                         <outlet property="ui_doneEditionPlayerButton" destination="v8K-pG-gfH" id="JmC-yF-LSa"/>
                         <outlet property="ui_namePlayer" destination="bsK-pa-Z4n" id="MaW-DS-fyl"/>
                         <outlet property="ui_phoneNumberPlayer" destination="sIu-82-WAP" id="aJf-Yr-8QR"/>

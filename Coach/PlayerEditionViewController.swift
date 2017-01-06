@@ -25,7 +25,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
     var delegate : EditionDelegate!
     let realm = try! Realm()
     var player : Player?
-    var editNotNew: Bool? //Variable to be defined in the "prepare" function called with the segue
+    var status: playerStatus? //Variable to be defined in the "prepare" function called with the segue
     
     //MARK: - UI Methods
     @IBAction func cancelEditionPlayer(_ sender: UIBarButtonItem) {
@@ -76,7 +76,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         super.viewDidLoad()
         
         //VC's title and player init
-        if editNotNew! {
+        if (status! == .edit) || (status! == .newFromContacts )  {
             title = player!.name
             ui_namePlayer.text = player!.name
             ui_phoneNumberPlayer.text = player!.phoneNumber
@@ -99,7 +99,7 @@ class PlayerEditionViewController: UIViewController, UITextFieldDelegate, UIGest
         self.view.addGestureRecognizer(slideDownGesture)
         
         //Activate or disable nameTextField & delete button
-        if editNotNew! {
+        if status! == .edit {
             ui_namePlayer.isEnabled = false
             ui_deletePlayerButton.isHidden = false
         } else {

@@ -44,7 +44,7 @@ class PlayerViewController: UIViewController, EditionDelegate {
                 let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
                 // Pass the variable
                 playerEditionVC.player = player
-                playerEditionVC.editNotNew = true
+                playerEditionVC.status = .edit
                 playerEditionVC.delegate = self
             }
         }

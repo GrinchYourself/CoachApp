@@ -530,6 +530,7 @@
 					"$(PROJECT_DIR)/Coach",
 				);
 				INFOPLIST_FILE = Coach/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.grinchyourself.com.Coach;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,6 +547,7 @@
 					"$(PROJECT_DIR)/Coach",
 				);
 				INFOPLIST_FILE = Coach/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = www.grinchyourself.com.Coach;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,8 +8,16 @@
 
 import UIKit
 import RealmSwift
+import ContactsUI
 
-class PlayersViewController: UITableViewController, EditionDelegate {
+enum playerStatus {
+    case none
+    case newManually
+    case newFromContacts
+    case edit
+}
+
+class PlayersViewController: UITableViewController, CNContactPickerDelegate, EditionDelegate {
     
     //MARK: - VC's Variables
     let realm = try! Realm()
@@ -19,8 +27,44 @@ class PlayersViewController: UITableViewController, EditionDelegate {
             return realm.objects(Player.self).sorted(byProperty: "name")
         }
     }
-    var player:Player = Player()
+    var player:Player?
+    let contactPicker = CNContactPickerViewController()
+    var playerStatus:playerStatus?
 
+    //MARK: - Actions
+    @IBAction func addNewPlayer(_ sender: UIBarButtonItem) {
+        //init player variable
+        player = nil
+        // Create and initialize an UIAlertController instance.
+        let alertController = UIAlertController(title: "Add New Player", message: nil, preferredStyle: .actionSheet)
+        // Initialize the actions to show along with the alert.
+        let manualAction = UIAlertAction(title:"Manually", style: .default) { (action) -> Void in
+            print("You selected the manual action")
+            self.playerStatus = .newManually
+            self.performSegue(withIdentifier: "NewPlayer", sender: nil)
+        }
+        
+        let contactAction = UIAlertAction(title:"From your Contacts", style: .default) { (action) -> Void in
+            print("You selected the contact action")
+            self.contactPicker.delegate = self
+            self.contactPicker.displayedPropertyKeys = [CNContactPhoneNumbersKey]
+            self.present(self.contactPicker, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title:"Cancel", style: .cancel) { (action) -> Void in
+            print("You selected the Cancel action")
+        }
+        
+        // Tell the alertController about the actions we want it to present.
+        alertController.addAction(manualAction)
+        alertController.addAction(contactAction)
+        alertController.addAction(cancelAction)
+        
+        // Present the alert controller and associated actions.
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +92,17 @@ class PlayersViewController: UITableViewController, EditionDelegate {
             }
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //When the contactPicker will disappear, it's time to present the editionPlayerViewController
+        if let pl = playerStatus {
+            if pl == .newFromContacts {
+                self.performSegue(withIdentifier: "NewPlayer", sender: nil)
+                //initialisation of the players's status to avoid the launch of the editionPlayerVC when PlayerVC->PlayersVC
+                playerStatus = .none
+            }
+        }
     }
     
     //MARK: - TableView Methods
@@ -106,20 +161,21 @@ class PlayersViewController: UITableViewController, EditionDelegate {
             if let destVC = segue.destination as? UINavigationController {
                 let playerEditionVC = destVC.topViewController as! PlayerEditionViewController
                 // Informs PlayerEditionViewController that we create a new Player
-                playerEditionVC.editNotNew = false
+                playerEditionVC.status = playerStatus!
                 playerEditionVC.delegate = self
-                playerEditionVC.player = nil
+                playerEditionVC.player = player
             }
             
         } else if segue.identifier! == "ShowNewPlayer" {
             if let playerVC = segue.destination as? PlayerViewController {
                 // Pass the variable
-                playerVC.player = player
+                playerVC.player = player!
             }
             
         }
     }
 
+    //MARK: - EditionDelegate Method
     func dismissEditionViewController(controller: UIViewController, player: Player?) {
         //This function allows to pass player variable and launch PlayerViewController before dismissing EditionViewController
         if player != nil{
@@ -127,6 +183,31 @@ class PlayersViewController: UITableViewController, EditionDelegate {
             self.performSegue(withIdentifier: "ShowNewPlayer", sender: nil)
         }
         controller.dismiss(animated: true, completion: nil)
+    }
+
+    
+    //MARK: - ContactsUI Methods
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contactProperty: CNContactProperty) {
+        let contact = contactProperty.contact
+        let phoneNumber = contactProperty.value as! CNPhoneNumber
+        print(getContactName(contact: contact))
+        print(phoneNumber.stringValue)
+        //Prepare the navigation
+        self.playerStatus = .newFromContacts
+        player = Player()
+        player!.name = getContactName(contact: contact)
+        player!.phoneNumber = phoneNumber.stringValue
+    }
+    
+    func getContactName(contact:CNContact) -> String {
+        var contactName: String = ""
+        if contact.namePrefix != "" { contactName = contactName + contact.namePrefix + " " }
+        if contact.givenName != "" { contactName = contactName + contact.givenName + " " }
+        if contact.middleName != "" { contactName = contactName + contact.middleName + " " }
+        if contact.familyName != "" { contactName = contactName + contact.familyName + " " }
+        if contact.nameSuffix != "" { contactName = contactName + contact.nameSuffix + " " }
+        return contactName.trimmingCharacters(in: .whitespaces)
     }
 }
 

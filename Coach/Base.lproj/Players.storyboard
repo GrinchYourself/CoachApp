@@ -75,12 +75,13 @@
                     <navigationItem key="navigationItem" id="je7-5T-Ydc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cd5-cW-GYS">
                             <connections>
-                                <segue destination="XEh-ag-yKM" kind="presentation" identifier="NewPlayer" id="HiM-bp-xiL"/>
+                                <action selector="addNewPlayer:" destination="bbO-Je-GfY" id="O1X-Zm-FL7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="DoQ-qf-bN8" kind="show" identifier="ShowNewPlayer" animates="NO" id="OuK-0c-D8O"/>
+                        <segue destination="XEh-ag-yKM" kind="presentation" identifier="NewPlayer" id="quE-pf-tfs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPF-k3-2ix" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,7 +231,7 @@
         <image name="PlayersTabBarIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="OuK-0c-D8O"/>
-        <segue reference="HiM-bp-xiL"/>
+        <segue reference="TEV-Wo-eBU"/>
+        <segue reference="quE-pf-tfs"/>
     </inferredMetricsTieBreakers>
 </document>
